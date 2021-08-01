@@ -19,7 +19,6 @@ function getRate() {
 
 function getYears() {
 	let option = document.getElementById("years").value;
-	console.log(option);
 	return option;
 }
 
@@ -28,7 +27,6 @@ function compute() {
 	let amount = getAmount() ? parseInt(getAmount()) : 0;
 	let rate = getRate() ? parseInt(getRate()) : 0;
 	let years = getYears() ? parseInt(getYears()) : 0;
-	console.log(amount, rate, years);
 	let returnValue = (amount * rate * years) / 100;
 	document.getElementById("result").innerHTML = `
                 If you deposit <mark>${amount}</mark>,<br>
