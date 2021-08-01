@@ -1,4 +1,46 @@
-body {background-color:tan;}
-h1{color:green;}
+body {
+	background-color: black;
+	font-family: "Roboto", sans-serif;
+}
 
+* {
+	margin: 0;
+	padding: 0;
+}
 
+.container {
+	margin: 20px;
+	padding: 20px;
+}
+
+.main {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.card {
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+	min-width: 300px;
+	width: 400px;
+}
+
+.card-header {
+	color: grey;
+	margin: 10px;
+}
+
+.card-body {
+	margin: 10px;
+	padding: 10px;
+	/* text-align: center; */
+	align-items: center;
+}
+
+.card th,
+td {
+	padding: 10px;
+}
