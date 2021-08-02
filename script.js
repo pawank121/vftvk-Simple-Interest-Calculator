@@ -9,7 +9,7 @@ function rateChange() {
 	};
 }
 
-function getAmount() {
+function getprincipal() {
 	return document.getElementById("principal").value;
 }
 
@@ -22,15 +22,39 @@ function getYears() {
 	return option;
 }
 
+function validtePrincipal(data) {
+	if (data <= 0 || data === null || data === undefined) return false;
+	return true;
+}
+
 function compute() {
 	rateChange();
-	let amount = getAmount() ? parseInt(getAmount()) : 0;
-	let rate = getRate() ? parseInt(getRate()) : 0;
+	let principal = getprincipal() ? parseFloat(getprincipal()) : 0;
+	let rate = getRate() ? parseFloat(getRate()) : 0;
 	let years = getYears() ? parseInt(getYears()) : 0;
-	let returnValue = (amount * rate * years) / 100;
-	document.getElementById("result").innerHTML = `
-                If you deposit <mark>${amount}</mark>,<br>
+	let returnValue = parseFloat(((principal * rate * years) / 100).toFixed(2));
+
+	if (validtePrincipal(principal)) {
+		let invalid = document.getElementById("invalid");
+		invalid.innerText = "";
+		invalid.classList.remove("invalid");
+
+		let amount = parseFloat((returnValue + principal).toFixed(2));
+
+		let result = document.getElementById("result");
+
+		result.innerHTML = `
+                If you deposit <mark>${principal}</mark>,<br>
                 at an interest rate of <mark>${rate}%</mark>.<br>
-                You will receive an amount of <mark>${amount + returnValue}</mark>,<br>
+                You will receive an principal of <mark>${amount}</mark>,<br>
                 in the year <mark>${new Date().getFullYear() + years}</mark>,`;
+		result.classList.remove("invalid");
+	} else {
+		let invalid = document.getElementById("invalid");
+		invalid.innerText = "Please enter a positive number !";
+		invalid.classList.add("invalid");
+		let result = document.getElementById("result");
+		result.innerText = "Please enter valid Inputs !";
+		result.classList.add("invalid");
+	}
 }
