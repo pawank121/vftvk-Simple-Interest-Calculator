@@ -56,5 +56,8 @@ function compute() {
 		let result = document.getElementById("result");
 		result.innerText = "Please enter valid Inputs !";
 		result.classList.add("invalid");
+
+		alert("Please enter a positive number !");
+		document.getElementById("principal").focus();
 	}
 }
