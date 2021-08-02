@@ -1,11 +1,11 @@
 function rateChange() {
 	let slider = document.getElementById("rate");
 	let output = document.getElementById("current_rate");
-	output.innerHTML = slider.value; // Display the default slider value
+	output.innerHTML = parseFloat(slider.value).toFixed(2); // Display the default slider value
 
 	// Update the current slider value (each time you drag the slider handle)
 	slider.oninput = function () {
-		output.innerHTML = this.value;
+		output.innerHTML = parseFloat(this.value).toFixed(2);
 	};
 }
 
@@ -39,7 +39,7 @@ function compute() {
 		invalid.innerText = "";
 		invalid.classList.remove("invalid");
 
-		let amount = parseFloat((returnValue + principal).toFixed(2));
+		let amount = parseFloat(returnValue.toFixed(2));
 
 		let result = document.getElementById("result");
 
